@@ -203,8 +203,8 @@ export type Project = {
   features: string[];
   architecture: string[];
   challenges: string[];
-  lessons: string[];
-  future: string[];
+  lessons?: string[];
+  future?: string[];
   github?: string;
   demo?: string;
 };

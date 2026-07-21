@@ -82,7 +82,7 @@ function Home() {
       <Projects />
       <Achievements />
       <Certifications />
-      <Testimonials />
+
       <CurrentFocus />
       <FAQ />
       <Resume />

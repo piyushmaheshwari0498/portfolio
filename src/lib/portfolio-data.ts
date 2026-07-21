@@ -212,6 +212,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "rue-catering-pos",
+    company: "ASA Technologies",
+    responsibilities: [
+      "Architected offline-first Flutter POS with local queue + Firestore sync",
+      "Integrated Star/Sunmi thermal printers and split-payment workflows",
+      "Owned release management across 3 outlets, 100+ tx/day per branch",
+    ],
     name: "RUE Catering POS",
     tagline: "Offline-first Flutter POS running 3 outlets, 100+ tx/day/branch.",
     role: "Solo Mobile Engineer",
@@ -251,6 +257,12 @@ export const projects: Project[] = [
   },
   {
     slug: "alhelli-warehouse-pda",
+    company: "ASA Technologies",
+    responsibilities: [
+      "Built Kotlin PDA app with Room-backed offline goods-receipt flows",
+      "Implemented resilient SAP sync layer with batched retries",
+      "Handled hardware barcode triggers across rugged device generations",
+    ],
     name: "Alhelli Warehouse PDA",
     tagline: "SAP-integrated Android app for high-volume warehouse scanning.",
     role: "Android Engineer",
@@ -289,6 +301,12 @@ export const projects: Project[] = [
   },
   {
     slug: "inwani-super-app",
+    company: "ASA Technologies",
+    responsibilities: [
+      "Led Flutter Clean Architecture with per-feature modularization",
+      "Implemented biometric-gated JWT (AES-GCM) secure token vault",
+      "Delivered EN/AR RTL UI with region-aware API routing (KSA/Bahrain)",
+    ],
     name: "Inwani Real Estate Super App",
     tagline: "Multi-region Flutter super app with biometric JWT auth.",
     role: "Lead Flutter Engineer",
@@ -327,6 +345,12 @@ export const projects: Project[] = [
   },
   {
     slug: "nuvix-ott",
+    company: "Personal Project",
+    responsibilities: [
+      "Wrote custom video engine with health-checked CDN failover",
+      "Built WorkManager-backed background download queue with pause/resume",
+      "Integrated TMDB workflow automation for content ingestion",
+    ],
     name: "NUVIX OTT Streaming",
     tagline: "Flutter streaming platform with custom video engine.",
     role: "Solo Developer",
@@ -361,6 +385,12 @@ export const projects: Project[] = [
   },
   {
     slug: "smartbill-pos",
+    company: "Personal Project",
+    responsibilities: [
+      "Modeled immutable snapshot documents for audit-safe invoicing",
+      "Wrapped Firebase transactions for correct inventory writes",
+      "Shipped a reusable PDF engine for A4 + thermal formats",
+    ],
     name: "SmartBill POS & Invoicing",
     tagline: "High-integrity Flutter POS with immutable financial records.",
     role: "Solo Developer",
@@ -391,6 +421,12 @@ export const projects: Project[] = [
   },
   {
     slug: "servicekeeda-ev",
+    company: "Freelance Client",
+    responsibilities: [
+      "Delivered end-to-end Android app in a fixed 8-week engagement",
+      "Integrated Google Maps discovery + multi-method payments",
+      "Wired push notifications for booking and charging session events",
+    ],
     name: "ServiceKeeda EV Charging",
     tagline: "Freelance Android app for EV station discovery and booking.",
     role: "Freelance Android Developer",

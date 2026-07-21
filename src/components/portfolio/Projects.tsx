@@ -88,11 +88,11 @@ export function Projects() {
                     ))}
                   </div>
 
-                  <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">
-                    <span>
-                      {p.role} · {p.duration}
+                  <div className="mt-5 flex items-center justify-between gap-3 text-xs text-muted-foreground">
+                    <span className="min-w-0 truncate">
+                      <span className="text-accent">{p.company}</span> · {p.duration}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-accent group-hover:translate-x-1 transition-transform">
+                    <span className="inline-flex shrink-0 items-center gap-1 text-accent transition-transform group-hover:translate-x-1">
                       View details <ArrowUpRight className="size-3" />
                     </span>
                   </div>

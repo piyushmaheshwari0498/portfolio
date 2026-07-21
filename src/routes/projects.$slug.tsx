@@ -12,9 +12,10 @@ export const Route = createFileRoute("/projects/$slug")({
     if (!project) throw notFound();
     return { project };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) return {};
     const p = loaderData.project;
+    const url = `/projects/${params.slug}`;
     return {
       meta: [
         { title: `${p.name} — Piyush Maheshwari` },
@@ -22,9 +23,25 @@ export const Route = createFileRoute("/projects/$slug")({
         { property: "og:title", content: `${p.name} — Piyush Maheshwari` },
         { property: "og:description", content: p.tagline },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: `${p.name} — Piyush Maheshwari` },
         { name: "twitter:description", content: p.tagline },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: p.name,
+            description: p.tagline,
+            about: p.overview,
+            creator: { "@type": "Person", name: "Piyush Maheshwari" },
+            keywords: p.tech.join(", "),
+          }),
+        },
       ],
     };
   },
@@ -77,9 +94,10 @@ function ProjectPage() {
 
   const toc = [
     { id: "overview", label: "Overview" },
+    { id: "responsibilities", label: "Responsibilities" },
     { id: "problem", label: "Problem" },
     { id: "solution", label: "Solution" },
-    { id: "features", label: "Features" },
+    { id: "features", label: "Key Features" },
     { id: "architecture", label: "Architecture" },
     { id: "challenges", label: "Challenges" },
     { id: "lessons", label: "Lessons Learned" },
@@ -120,6 +138,10 @@ function ProjectPage() {
             {project.name}
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
+
+          <div className="mt-4 text-sm text-muted-foreground">
+            <span className="text-accent">{project.company}</span> · {project.duration}
+          </div>
 
           <div className="mt-6 flex flex-wrap gap-1.5">
             {project.tech.map((t: string) => (
@@ -229,6 +251,17 @@ function ProjectPage() {
               <p>{project.overview}</p>
             </Section>
 
+            <Section id="responsibilities" title="Responsibilities">
+              <ul className="space-y-2">
+                {project.responsibilities.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
             <Section id="problem" title="Problem Statement">
               <p>{project.problem}</p>
             </Section>
@@ -237,7 +270,7 @@ function ProjectPage() {
               <p>{project.solution}</p>
             </Section>
 
-            <Section id="features" title="Features">
+            <Section id="features" title="Key Features">
               <ul className="space-y-2">
                 {project.features.map((f: string) => (
                   <li key={f} className="flex gap-3">

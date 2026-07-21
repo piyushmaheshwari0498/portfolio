@@ -187,6 +187,8 @@ export const experiences: Experience[] = [
 export type Project = {
   slug: string;
   name: string;
+  company: string;
+  responsibilities: string[];
   tagline: string;
   role: string;
   duration: string;

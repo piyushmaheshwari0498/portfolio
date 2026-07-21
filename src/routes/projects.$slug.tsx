@@ -100,8 +100,12 @@ function ProjectPage() {
     { id: "features", label: "Key Features" },
     { id: "architecture", label: "Architecture" },
     { id: "challenges", label: "Challenges" },
-    { id: "lessons", label: "Lessons Learned" },
-    { id: "future", label: "Future Improvements" },
+    ...(project.lessons && project.lessons.length > 0
+      ? [{ id: "lessons", label: "Lessons Learned" }]
+      : []),
+    ...(project.future && project.future.length > 0
+      ? [{ id: "future", label: "Future Improvements" }]
+      : []),
   ];
 
   return (

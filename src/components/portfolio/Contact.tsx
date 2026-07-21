@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Mail, MapPin, Github, Linkedin, Send, Phone } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
 import { profile } from "@/lib/portfolio-data";
+import { sendContactMessage } from "@/lib/contact.functions";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
   const [state, setState] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  const sendMessage = useServerFn(sendContactMessage);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErr(null);
+    setSent(false);
     if (!state.name.trim() || !state.email.trim() || !state.message.trim()) {
       setErr("Please fill out every field.");
       return;
@@ -19,10 +24,17 @@ export function Contact() {
       setErr("Please enter a valid email.");
       return;
     }
-    const subject = encodeURIComponent(`Portfolio enquiry from ${state.name}`);
-    const body = encodeURIComponent(`${state.message}\n\n— ${state.name} (${state.email})`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-    setSent(true);
+    try {
+      setSending(true);
+      await sendMessage({ data: state });
+      setSent(true);
+      setState({ name: "", email: "", message: "" });
+    } catch (e) {
+      console.error(e);
+      setErr("Couldn't send your message. Please try again or email directly.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -121,15 +133,16 @@ export function Contact() {
               {err && <div className="text-xs text-destructive">{err}</div>}
               {sent && (
                 <div className="text-xs text-success">
-                  Opening your mail client — thanks for reaching out!
+                  Message sent — thanks for reaching out! I&apos;ll reply within 24 hours.
                 </div>
               )}
 
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/30 hover:brightness-110 transition"
+                disabled={sending}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/30 hover:brightness-110 transition disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <Send className="size-4" /> Send message
+                <Send className="size-4" /> {sending ? "Sending…" : "Send message"}
               </button>
             </form>
           </Reveal>

@@ -18,7 +18,7 @@ export function Resume() {
           <Reveal>
             <div className="max-w-2xl">
               <div className="text-xs uppercase tracking-[0.2em] text-accent">
-                10 — Resume
+                08 — Resume
               </div>
               <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
                 The full <span className="text-gradient">career at a glance</span>.

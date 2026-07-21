@@ -7,7 +7,7 @@ import { Experience } from "@/components/portfolio/Experience";
 import { Projects } from "@/components/portfolio/Projects";
 import { Achievements } from "@/components/portfolio/Achievements";
 import { Certifications } from "@/components/portfolio/Certifications";
-import { Testimonials } from "@/components/portfolio/Testimonials";
+
 import { CurrentFocus } from "@/components/portfolio/CurrentFocus";
 import { FAQ } from "@/components/portfolio/FAQ";
 import { Resume } from "@/components/portfolio/Resume";
@@ -82,7 +82,7 @@ function Home() {
       <Projects />
       <Achievements />
       <Certifications />
-      <Testimonials />
+
       <CurrentFocus />
       <FAQ />
       <Resume />

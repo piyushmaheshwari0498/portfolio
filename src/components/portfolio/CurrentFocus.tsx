@@ -26,7 +26,7 @@ export function CurrentFocus() {
         <Reveal>
           <div className="max-w-2xl">
             <div className="text-xs uppercase tracking-[0.2em] text-accent">
-              08 — Availability
+              06 — Availability
             </div>
             <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
               What I&apos;m building <span className="text-gradient">right now</span>.

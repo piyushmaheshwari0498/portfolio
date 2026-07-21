@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-28 md:py-36">
+    <section id="skills" className="relative py-20 md:py-28">
       <div className="absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-72 w-[80%] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
       </div>

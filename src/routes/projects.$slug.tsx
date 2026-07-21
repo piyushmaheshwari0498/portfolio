@@ -251,6 +251,17 @@ function ProjectPage() {
               <p>{project.overview}</p>
             </Section>
 
+            <Section id="responsibilities" title="Responsibilities">
+              <ul className="space-y-2">
+                {project.responsibilities.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
             <Section id="problem" title="Problem Statement">
               <p>{project.problem}</p>
             </Section>
@@ -259,7 +270,7 @@ function ProjectPage() {
               <p>{project.solution}</p>
             </Section>
 
-            <Section id="features" title="Features">
+            <Section id="features" title="Key Features">
               <ul className="space-y-2">
                 {project.features.map((f: string) => (
                   <li key={f} className="flex gap-3">

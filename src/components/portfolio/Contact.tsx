@@ -38,7 +38,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-28 md:py-36">
+    <section id="contact" className="relative py-20 md:py-28">
       <div className="absolute inset-0 -z-10">
         <div className="aurora opacity-40" />
       </div>
@@ -47,7 +47,7 @@ export function Contact() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
           <div>
             <Reveal>
-              <div className="text-xs uppercase tracking-[0.2em] text-accent">06 — Contact</div>
+              <div className="text-xs uppercase tracking-[0.2em] text-accent">09 — Contact</div>
               <h2 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
                 Let&apos;s build something <span className="text-gradient">users love</span>.
               </h2>

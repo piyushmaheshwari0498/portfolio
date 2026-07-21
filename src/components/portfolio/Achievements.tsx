@@ -41,7 +41,7 @@ function Counter({ value, suffix }: { value: number; suffix?: string }) {
 
 export function Achievements() {
   return (
-    <section className="relative py-24">
+    <section className="relative py-16 md:py-20">
       <div className="container-x">
         <div className="glass rounded-3xl p-8 md:p-12">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

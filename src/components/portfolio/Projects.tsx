@@ -15,7 +15,7 @@ export function Projects() {
   );
 
   return (
-    <section id="projects" className="relative py-28 md:py-36">
+    <section id="projects" className="relative py-20 md:py-28">
       <div className="container-x">
         <Reveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

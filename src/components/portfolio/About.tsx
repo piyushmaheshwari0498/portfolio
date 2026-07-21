@@ -4,7 +4,7 @@ import { profile, education } from "@/lib/portfolio-data";
 
 export function About() {
   return (
-    <section id="about" className="relative py-28 md:py-36">
+    <section id="about" className="relative py-20 md:py-28">
       <div className="container-x">
         <Reveal>
           <div className="max-w-2xl">

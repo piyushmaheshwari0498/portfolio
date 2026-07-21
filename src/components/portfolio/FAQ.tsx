@@ -9,7 +9,7 @@ export function FAQ() {
         <Reveal>
           <div className="max-w-2xl">
             <div className="text-xs uppercase tracking-[0.2em] text-accent">
-              09 — FAQ
+              07 — FAQ
             </div>
             <h2 className="mt-3 text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
               Questions I get <span className="text-gradient">a lot</span>.

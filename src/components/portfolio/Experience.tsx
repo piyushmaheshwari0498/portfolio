@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-28 md:py-36">
+    <section id="experience" className="relative py-20 md:py-28">
       <div className="container-x">
         <Reveal>
           <div className="max-w-2xl">

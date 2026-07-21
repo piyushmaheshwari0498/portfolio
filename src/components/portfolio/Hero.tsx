@@ -80,9 +80,12 @@ export function Hero() {
             <span>
               I&apos;m <span className="text-foreground font-medium">{profile.name}</span>,
             </span>
-            <span className="text-foreground font-medium">
-              a {typed}
-              <span className="caret" />
+            <span className="relative inline-block text-foreground font-medium text-left">
+              <span aria-hidden className="invisible whitespace-nowrap">a Offline-First Architect</span>
+              <span className="absolute inset-0 whitespace-nowrap">
+                a {typed}
+                <span className="caret" />
+              </span>
             </span>
           </div>
 

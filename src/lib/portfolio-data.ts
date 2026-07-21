@@ -508,3 +508,200 @@ export const projectFilters = [
   "Freelance",
   "Personal",
 ];
+
+// Additional resume projects (from Interlink & CRDR tenures)
+projects.push(
+  {
+    slug: "asa-attendance-app",
+    name: "ASA Attendance & Tasks",
+    company: "ASA Technologies",
+    tagline: "End-to-end attendance and task management with real-time dashboards.",
+    role: "Mobile Engineer",
+    duration: "2024",
+    platform: "Android · Flutter",
+    status: "In Production",
+    categories: ["Flutter", "Firebase", "Enterprise"],
+    tech: ["Flutter", "Firebase", "REST", "Charts"],
+    cover: "linear-gradient(135deg,#2563EB,#10B981)",
+    overview:
+      "An internal workforce app for attendance, task assignment, and manager dashboards, wired to Firebase for real-time reporting.",
+    problem: "Managers needed live visibility into team status without spreadsheets.",
+    solution: "Flutter client + Firestore listeners drive a reporting layer that updates as events arrive.",
+    responsibilities: [
+      "Built attendance capture and task modules end-to-end",
+      "Wired real-time manager dashboards on Firestore",
+      "Owned Play Store release process and versioning",
+    ],
+    features: ["Live attendance", "Task assignment", "Reporting dashboard", "Role-based access"],
+    architecture: ["Firestore realtime data model", "Repository-per-feature Flutter modules"],
+    challenges: ["Keeping realtime cost predictable at scale"],
+    lessons: ["Denormalize aggressively for realtime dashboards"],
+    future: ["Payroll integration", "Geo-fenced check-in"],
+  },
+  {
+    slug: "forlim-popoli-ecommerce",
+    name: "Forlim Popoli E-Commerce",
+    company: "Interlink Consultant",
+    tagline: "Full order lifecycle with CCAvenue split payments.",
+    role: "Android Developer",
+    duration: "2022",
+    platform: "Android",
+    status: "In Production",
+    categories: ["Android", "Java", "Enterprise"],
+    tech: ["Android", "Java", "CCAvenue", "REST"],
+    cover: "linear-gradient(135deg,#EF4444,#F59E0B)",
+    overview: "An Android e-commerce app with barcode article handling and split Pay Now / Pay Later flows.",
+    problem: "The client needed flexible payment handling alongside barcode-based stock lookups.",
+    solution: "CCAvenue split payment integration paired with a barcode-first catalog UX.",
+    responsibilities: [
+      "Delivered end-to-end order lifecycle screens",
+      "Integrated CCAvenue split payment flows",
+      "Handled barcode-driven article lookups",
+    ],
+    features: ["Cart & checkout", "Split payments", "Barcode article lookup", "Order history"],
+    architecture: ["MVVM Android with Retrofit"],
+    challenges: ["Reconciling split payment states across gateways"],
+    lessons: ["Payment UIs live and die by clear failure states"],
+    future: ["Loyalty program"],
+  },
+  {
+    slug: "regal-fashion-sales",
+    name: "Regal Fashion Field Sales",
+    company: "Interlink Consultant",
+    tagline: "Multi-branch stock unification for field sales teams.",
+    role: "Android Developer",
+    duration: "2022",
+    platform: "Android",
+    status: "In Production",
+    categories: ["Android", "Java", "Enterprise"],
+    tech: ["Android", "Java", "REST", "PDF"],
+    cover: "linear-gradient(135deg,#6D28D9,#EF4444)",
+    overview: "Field sales app unifying multi-branch stock with real-time inventory checks and automated client reports.",
+    problem: "Reps had no reliable way to check stock across branches while on-site with clients.",
+    solution: "Central inventory API surfaced through a lightweight Android UI with PDF reporting.",
+    responsibilities: [
+      "Built multi-branch stock lookup UI",
+      "Automated PDF client reports",
+      "Wired auth + role-scoped access",
+    ],
+    features: ["Cross-branch stock", "PDF reports", "Role-based access"],
+    architecture: ["MVVM Android with cached inventory reads"],
+    challenges: ["Keeping stock views fresh across flaky sales-floor networks"],
+    lessons: ["Cache aggressively, invalidate loudly"],
+    future: ["Offline mode"],
+  },
+  {
+    slug: "connectexpress-tracking",
+    name: "ConnectExpress Workforce Tracking",
+    company: "Interlink Consultant",
+    tagline: "Maps + geolocation for field-executive attendance at scale.",
+    role: "Android Developer",
+    duration: "2022",
+    platform: "Android",
+    status: "In Production",
+    categories: ["Android", "Java", "Enterprise"],
+    tech: ["Android", "Google Maps", "Geolocation", "REST"],
+    cover: "linear-gradient(135deg,#10B981,#38BDF8)",
+    overview: "Google Maps + geolocation app for field-executive attendance and location-stamped feedback capture.",
+    problem: "Ops needed verifiable attendance and site-visit records from field teams.",
+    solution: "Location-stamped attendance and feedback flows backed by Google Maps SDK.",
+    responsibilities: [
+      "Implemented Maps SDK integration and geofencing",
+      "Built location-stamped feedback capture",
+      "Optimized battery use for long field shifts",
+    ],
+    features: ["Geo-stamped attendance", "Map-based tracking", "Feedback capture"],
+    architecture: ["Foreground service + WorkManager coordination"],
+    challenges: ["Battery-safe location updates in the background"],
+    lessons: ["Background location on Android is a policy problem, not a code problem"],
+    future: ["Route optimization"],
+  },
+  {
+    slug: "enterprise-suite",
+    name: "Enterprise HRMS / PMS / Leave Suite",
+    company: "CRDR Infotech",
+    tagline: "Scalable Android apps across HR, project and leave management.",
+    role: "Android Developer",
+    duration: "2018 — 2019",
+    platform: "Android",
+    status: "In Production",
+    categories: ["Android", "Java", "Enterprise"],
+    tech: ["Android", "Java", "REST", "MySQL"],
+    cover: "linear-gradient(135deg,#2563EB,#6D28D9)",
+    overview: "Three enterprise Android products — HRMS, PMS, and Leave Management — delivered inside a 3-person agile team.",
+    problem: "Client operations were spread across paper and desktop tools with no mobile access.",
+    solution: "A shared Android foundation reused across three domain apps with per-tenant configuration.",
+    responsibilities: [
+      "Owned the mobile lifecycle for two major client deployments",
+      "Built REST integrations against MySQL-backed services",
+      "Introduced shared UI patterns reused across the three apps",
+    ],
+    features: ["HR self-service", "Project tracking", "Leave workflows", "Role-based access"],
+    architecture: ["Modular Android app with shared network + auth layer"],
+    challenges: ["Balancing per-tenant customization against a shared codebase"],
+    lessons: ["Ship the shared foundation first, customize second"],
+    future: ["Design refresh"],
+  },
+);
+
+export const languages = [
+  { name: "English", level: "Professional" },
+  { name: "Hindi", level: "Native" },
+];
+
+export const techStack = [
+  "Flutter", "Dart", "Kotlin", "Java", "Android SDK", "Jetpack",
+  "Firebase", "Firestore", "Room DB", "Hive", "SQLite",
+  "REST", "Retrofit", "GraphQL basics",
+  "Google Maps", "SAP Integration", "CCAvenue",
+  "MVVM", "Clean Architecture", "Offline-First",
+  "Git", "GitHub", "Android Studio", "Xcode basics",
+  "Star Printers", "Sunmi Devices", "Barcode SDKs",
+];
+
+export const testimonials = [
+  {
+    name: "Placeholder Reviewer",
+    role: "Engineering Manager",
+    company: "Client — testimonial pending",
+    quote:
+      "Piyush owned the mobile stack end-to-end and consistently delivered releases that felt polished on day one. Real client quote coming soon.",
+  },
+  {
+    name: "Placeholder Reviewer",
+    role: "Product Lead",
+    company: "Client — testimonial pending",
+    quote:
+      "Rare mix of native Android depth and Flutter fluency — turned around an offline-first POS in a fraction of the time we budgeted.",
+  },
+  {
+    name: "Placeholder Reviewer",
+    role: "Founder",
+    company: "Freelance client — testimonial pending",
+    quote:
+      "Clear communication, tight scope, no surprises. Shipped exactly what we agreed and stayed available through launch.",
+  },
+];
+
+export const faqs = [
+  {
+    q: "Are you available for freelance work?",
+    a: "Yes — I take on short to medium Flutter or Android engagements, typically 4–12 weeks. Reach out via the contact form with a brief and rough timeline.",
+  },
+  {
+    q: "Do you also work full-time roles?",
+    a: "I'm open to senior mobile engineering roles — remote or based out of Navi Mumbai / Mumbai. I'm most useful on offline-first, POS, enterprise, or Firebase-heavy products.",
+  },
+  {
+    q: "Which stack should I hire you for?",
+    a: "Both native Android (Kotlin/Java) and Flutter are production-grade for me. If reliability, offline sync, or hardware integrations matter, I default to native; for shared codebases across iOS + Android, Flutter.",
+  },
+  {
+    q: "Can you take a project from wireframe to Play Store?",
+    a: "Yes — I've shipped several apps solo, including architecture, implementation, releases, and post-launch reliability. I can also plug into an existing team as a senior IC.",
+  },
+  {
+    q: "What's your typical response time?",
+    a: "Within 24 hours on weekdays. Contact form submissions land directly in my inbox.",
+  },
+];

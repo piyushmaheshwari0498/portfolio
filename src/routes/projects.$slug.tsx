@@ -12,9 +12,10 @@ export const Route = createFileRoute("/projects/$slug")({
     if (!project) throw notFound();
     return { project };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     if (!loaderData) return {};
     const p = loaderData.project;
+    const url = `/projects/${params.slug}`;
     return {
       meta: [
         { title: `${p.name} — Piyush Maheshwari` },
@@ -22,9 +23,25 @@ export const Route = createFileRoute("/projects/$slug")({
         { property: "og:title", content: `${p.name} — Piyush Maheshwari` },
         { property: "og:description", content: p.tagline },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: `${p.name} — Piyush Maheshwari` },
         { name: "twitter:description", content: p.tagline },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CreativeWork",
+            name: p.name,
+            description: p.tagline,
+            about: p.overview,
+            creator: { "@type": "Person", name: "Piyush Maheshwari" },
+            keywords: p.tech.join(", "),
+          }),
+        },
       ],
     };
   },

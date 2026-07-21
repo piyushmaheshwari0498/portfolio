@@ -138,6 +138,10 @@ function ProjectPage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
 
+          <div className="mt-4 text-sm text-muted-foreground">
+            <span className="text-accent">{project.company}</span> · {project.duration}
+          </div>
+
           <div className="mt-6 flex flex-wrap gap-1.5">
             {project.tech.map((t: string) => (
               <span

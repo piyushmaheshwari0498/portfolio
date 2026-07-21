@@ -100,8 +100,12 @@ function ProjectPage() {
     { id: "features", label: "Key Features" },
     { id: "architecture", label: "Architecture" },
     { id: "challenges", label: "Challenges" },
-    { id: "lessons", label: "Lessons Learned" },
-    { id: "future", label: "Future Improvements" },
+    ...(project.lessons && project.lessons.length > 0
+      ? [{ id: "lessons", label: "Lessons Learned" }]
+      : []),
+    ...(project.future && project.future.length > 0
+      ? [{ id: "future", label: "Future Improvements" }]
+      : []),
   ];
 
   return (
@@ -303,27 +307,31 @@ function ProjectPage() {
               </ul>
             </Section>
 
-            <Section id="lessons" title="Lessons Learned">
-              <ul className="space-y-2">
-                {project.lessons.map((f: string) => (
-                  <li key={f} className="flex gap-3">
-                    <span className="mt-2 size-1.5 rounded-full bg-success shrink-0" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </Section>
+            {project.lessons && project.lessons.length > 0 && (
+              <Section id="lessons" title="Lessons Learned">
+                <ul className="space-y-2">
+                  {project.lessons.map((f: string) => (
+                    <li key={f} className="flex gap-3">
+                      <span className="mt-2 size-1.5 rounded-full bg-success shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
 
-            <Section id="future" title="Future Improvements">
-              <ul className="space-y-2">
-                {project.future.map((f: string) => (
-                  <li key={f} className="flex gap-3">
-                    <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </Section>
+            {project.future && project.future.length > 0 && (
+              <Section id="future" title="Future Improvements">
+                <ul className="space-y-2">
+                  {project.future.map((f: string) => (
+                    <li key={f} className="flex gap-3">
+                      <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
           </article>
         </div>
       </section>

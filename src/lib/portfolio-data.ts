@@ -203,8 +203,8 @@ export type Project = {
   features: string[];
   architecture: string[];
   challenges: string[];
-  lessons: string[];
-  future: string[];
+  lessons?: string[];
+  future?: string[];
   github?: string;
   demo?: string;
 };
@@ -214,46 +214,55 @@ export const projects: Project[] = [
     slug: "rue-catering-pos",
     company: "ASA Technologies",
     responsibilities: [
-      "Architected offline-first Flutter POS with local queue + Firestore sync",
-      "Integrated Star/Sunmi thermal printers and split-payment workflows",
-      "Owned release management across 3 outlets, 100+ tx/day per branch",
+      "Architected a single Flutter enterprise app with role-based modules (POS, Kitchen/KOT, Head Chef, Dispatch) sharing one Firebase Realtime Database",
+      "Built offline-first order capture with a local queue and Firebase Realtime sync so orders flow instantly across all roles",
+      "Integrated Star/Sunmi thermal printers and split-payment workflows for the cashier module",
+      "Implemented role-based authentication and per-role dashboards on top of a shared data model",
+      "Owned release management across 3 outlets, 100+ transactions/day per branch",
     ],
     name: "RUE Catering POS",
-    tagline: "Offline-first Flutter POS running 3 outlets, 100+ tx/day/branch.",
+    tagline: "Single enterprise restaurant platform — POS, Kitchen, Head Chef and Dispatch modules on one shared realtime database.",
     role: "Solo Mobile Engineer",
     duration: "2023 — Present",
     platform: "Android · Tablet",
     status: "In Production",
     categories: ["Flutter", "Firebase", "Enterprise"],
-    tech: ["Flutter", "Dart", "Firebase Firestore", "Hive", "Star Printers"],
+    tech: ["Flutter", "Dart", "Firebase Realtime Database", "Hive", "Star Printers", "Sunmi"],
     cover: "linear-gradient(135deg,#2563EB,#38BDF8)",
     overview:
-      "A production POS suite deployed across three catering outlets. Built with an offline-first core so cashiers keep taking orders even when the network drops, then reconcile transactions the moment connectivity returns.",
+      "RUE Catering is a single enterprise restaurant platform built as one Flutter application with multiple role-based modules — POS / Cashier Login, Kitchen (KOT) Login, Head Chef Login and Dispatch Login. Every module signs into the same Firebase Realtime Database, so an order placed at the POS appears instantly in the Kitchen, is managed by the Head Chef and pushed through Dispatch — all in real time, across three outlets running 100+ transactions per branch per day.",
     problem:
-      "The outlets needed a single POS that survives flaky Wi-Fi, prints thermal receipts reliably, and gives the head office real-time visibility into sales.",
+      "The outlets needed one unified restaurant system where cashiers, kitchen staff, the head chef and dispatch could work off the same live order data, keep taking orders when Wi-Fi drops, and print thermal receipts reliably — without stitching together separate apps per role.",
     solution:
-      "A Flutter tablet app backed by a local Hive queue and a Firestore sync engine. Every transaction is written locally first, then replayed against the cloud with conflict resolution and retry.",
+      "A single Flutter application with role-based logins that route each user into the correct module (POS, KOT, Head Chef, Dispatch). All modules read and write to a shared Firebase Realtime Database, so order state — created, acknowledged in the kitchen, prepared, dispatched — synchronizes live across every device. An offline-first local queue in Hive keeps the POS running during network loss and replays orders once connectivity returns.",
     features: [
-      "Offline-first order capture with automatic sync",
-      "Real-time menu, price, and modifier updates from head office",
+      "Role-based logins: POS / Cashier, Kitchen (KOT), Head Chef, Dispatch — one app, one codebase",
+      "Shared Firebase Realtime Database — orders created by POS appear instantly in KOT, Head Chef and Dispatch views",
+      "Offline-first order capture with automatic sync when connectivity returns",
+      "Kitchen workflow: KOT ticket lifecycle (new → in progress → ready) managed by the Head Chef",
+      "Dispatch workflow: real-time status updates as orders move from ready to dispatched",
       "Thermal receipt printing with Star & Sunmi hardware",
-      "Split payments, discounts, and refund workflows",
-      "Per-outlet analytics dashboard for management",
+      "Split payments, discounts and refund workflows in the POS module",
     ],
     architecture: [
-      "MVVM + Repository pattern with a sync-aware repository layer",
-      "Local write-ahead queue in Hive, replayed to Firestore",
-      "Thermal printer abstraction supporting multiple vendors",
+      "Offline-first Flutter application with a local Hive write-ahead queue",
+      "Firebase Realtime Database as the shared source of truth across every module",
+      "Role-based authentication that routes each user to their module (POS / KOT / Head Chef / Dispatch)",
+      "Shared data model — every module reads and writes the same order documents in realtime",
+      "Thermal printer integration abstracted over Star and Sunmi hardware",
+      "Kitchen workflow: KOT ticket state machine synchronized live to the Head Chef view",
+      "Dispatch workflow: order status transitions propagated back to POS and Kitchen in realtime",
     ],
     challenges: [
-      "Guaranteeing exactly-once transaction sync across intermittent connectivity",
-      "Zero-downtime menu updates without disrupting active orders",
+      "Keeping order state consistent in realtime across four different role-based modules on one shared database",
+      "Guaranteeing reliable transaction sync across intermittent connectivity without duplicate orders",
+      "Zero-downtime menu and price updates without disrupting orders already in the kitchen or dispatch queue",
+      "Defensive hardware integration for thermal printers across vendors and firmware revisions",
     ],
     lessons: [
-      "Offline-first is a UX decision as much as an architectural one",
-      "Hardware integrations demand defensive coding and long timeouts",
+      "One shared realtime database with role-scoped views is simpler and more reliable than syncing separate per-role apps",
+      "Offline-first must be treated as a UX contract, not just an implementation detail",
     ],
-    future: ["Kitchen display integration", "Loyalty program", "iPad support"],
   },
   {
     slug: "alhelli-warehouse-pda",

@@ -94,9 +94,10 @@ function ProjectPage() {
 
   const toc = [
     { id: "overview", label: "Overview" },
+    { id: "responsibilities", label: "Responsibilities" },
     { id: "problem", label: "Problem" },
     { id: "solution", label: "Solution" },
-    { id: "features", label: "Features" },
+    { id: "features", label: "Key Features" },
     { id: "architecture", label: "Architecture" },
     { id: "challenges", label: "Challenges" },
     { id: "lessons", label: "Lessons Learned" },

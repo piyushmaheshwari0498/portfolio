@@ -207,6 +207,7 @@ export type Project = {
   future?: string[];
   github?: string;
   demo?: string;
+  related?: { slug: string; label: string; description: string };
 };
 
 export const projects: Project[] = [

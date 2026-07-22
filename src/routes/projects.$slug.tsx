@@ -336,8 +336,42 @@ function ProjectPage() {
         </div>
       </section>
 
+      {/* Related Project */}
+      {project.related && (
+        <section className="py-16 border-t border-border">
+          <div className="container-x">
+            <Reveal>
+              <div className="text-xs uppercase tracking-[0.2em] text-accent">Related Project</div>
+              <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
+                Works together with
+              </h2>
+            </Reveal>
+            <Reveal>
+              <Link
+                to="/projects/$slug"
+                params={{ slug: project.related.slug }}
+                className="mt-6 block glass rounded-2xl p-6 tilt-card group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <div className="text-lg font-semibold group-hover:text-accent transition-colors">
+                      {project.related.label}
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {project.related.description}
+                    </p>
+                  </div>
+                  <ArrowRight className="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       {/* Prev/Next */}
       <section className="py-16 border-t border-border">
+
         <div className="container-x grid gap-4 sm:grid-cols-2">
           <Link
             to="/projects/$slug"

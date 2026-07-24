@@ -242,8 +242,6 @@ export const projects: Project[] = [
       "/rue-pos/1.webp",
       "/rue-pos/2.webp",
       "/rue-pos/3.webp",
-      "/rue-pos/4.webp",
-      "/rue-pos/5.webp",
     ],
     overview:
       "RUE Catering POS is a Flutter tablet application used by cashiers to take orders, apply discounts, split payments and print receipts. The POS communicates with the restaurant backend over REST APIs; the backend then writes each confirmed order into Firebase Realtime Database, where the separate native Android KOT application picks it up in the kitchen. The POS runs across three outlets and 100+ transactions per branch per day.",
@@ -312,8 +310,6 @@ export const projects: Project[] = [
       "/rue-kot/1.webp",
       "/rue-kot/2.webp",
       "/rue-kot/3.webp",
-      "/rue-kot/4.webp",
-      "/rue-kot/5.webp",
     ],
     overview:
       "RUE KOT is a native Android application that runs on kitchen displays and dispatch stations. It listens to Firebase Realtime Database for orders inserted by the backend (which receives them from the RUE Catering POS) and routes each order through role-based modules — Kitchen, Head Chef and Dispatch. It also synchronizes stock and inventory with the backend over REST APIs, and pushes order status updates back into Firebase so the POS reflects the kitchen state live.",
@@ -820,7 +816,6 @@ projects.push(
       "/hrms/1.webp",
       "/hrms/2.webp",
       "/hrms/3.webp",
-      "/hrms/4.webp",
     ],
     overview: "Three enterprise Android products — HRMS, PMS, and Leave Management — delivered inside a 3-person agile team.",
     problem: "Client operations were spread across paper and desktop tools with no mobile access.",

@@ -4,6 +4,21 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { projects, projectFilters } from "@/lib/portfolio-data";
 import { Reveal } from "./Reveal";
 
+function ProjectCover({ p }: { p: (typeof projects)[number] }) {
+  const [failed, setFailed] = useState(false);
+  if (p.coverImage && !failed) {
+    return (
+      <img
+        src={p.coverImage}
+        alt={p.name}
+        onError={() => setFailed(true)}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+    );
+  }
+  return <div className="absolute inset-0" style={{ background: p.cover }} />;
+}
+
 export function Projects() {
   const [filter, setFilter] = useState("All");
   const visible = useMemo(
@@ -55,19 +70,8 @@ export function Projects() {
                 className="group relative block overflow-hidden rounded-3xl glass tilt-card h-full"
               >
                 <div className="relative h-56 md:h-64 overflow-hidden">
-                  {p.coverImage ? (
-                    <img
-                      src={p.coverImage}
-                      alt={p.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div
-                      className="absolute inset-0"
-                      style={{ background: p.cover }}
-                    />
-                  )}
-
+                  <ProjectCover p={p} />
+                  
                   <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_60%)]" />
                   <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_80%_80%,white,transparent_60%)]" />

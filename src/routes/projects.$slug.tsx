@@ -6,6 +6,35 @@ import { Reveal } from "@/components/portfolio/Reveal";
 import { projects } from "@/lib/portfolio-data";
 import { useEffect, useState } from "react";
 
+function GalleryScreen({
+  name,
+  image,
+  index,
+}: {
+  name: string;
+  image: string;
+  index: number;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
+  return (
+    <Reveal delay={index * 100}>
+      <div className="mx-auto max-w-[260px]">
+        <div className="phone-mockup">
+          <div className="phone-screen">
+            <img
+              src={image}
+              alt={`${name} Screen ${index + 1}`}
+              onError={() => setFailed(true)}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
     const project = projects.find((p) => p.slug === params.slug);
@@ -81,6 +110,7 @@ function ProjectPage() {
   const next = projects[(idx + 1) % projects.length];
 
   const [progress, setProgress] = useState(0);
+  const [heroFailed, setHeroFailed] = useState(false);
   useEffect(() => {
     const onScroll = () => {
       const h = document.documentElement;
@@ -122,10 +152,11 @@ function ProjectPage() {
         style={{ background: project.cover }}
       > */}
       <section className="relative isolate pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
-        {project.heroImage ? (
+        {project.heroImage && !heroFailed ? (
           <img
             src={project.heroImage}
             alt={project.name}
+            onError={() => setHeroFailed(true)}
             className="absolute inset-0 w-full h-full object-cover"
           />
         ) : (
@@ -200,68 +231,18 @@ function ProjectPage() {
       </div>
     </section>
 
-      {/* Phone mockup gallery */ }
   <section className="py-16 md:py-20">
-    <div className="container-x">
-      <Reveal>
-        <div className="text-xs uppercase tracking-[0.2em] text-accent">Preview</div>
-        <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
-          Screens from the app
-        </h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Screenshots are illustrative — mockups shown pending final captures.
-        </p>
-      </Reveal>
-
-      <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {/* {[0, 1, 2].map((i) => (
-          <Reveal key={i} delay={i * 100}>
-            <div className="mx-auto max-w-[240px]">
-              <div className="phone-mockup">
-                <div className="phone-screen relative">
-                  <div className="absolute inset-0" style={{ background: project.cover }} />
-                  <div className="relative flex flex-col h-full p-4 text-white">
-                    <div className="text-[10px] uppercase opacity-70 tracking-widest">
-                      {project.name}
-                    </div>
-                    <div className="mt-2 text-xl font-semibold">
-                      {["Dashboard", "Details", "Actions"][i]}
-                    </div>
-                    <div className="mt-4 space-y-2">
-                      {Array.from({ length: 5 }).map((_, k) => (
-                        <div key={k} className="h-8 rounded-lg bg-white/10" />
-                      ))}
-                    </div>
-                    <div className="mt-auto flex items-center justify-between text-[10px] opacity-70">
-                      <span>Screen {i + 1} / 3</span>
-                      <Play className="size-3" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))} */}
-        {project.gallery?.map((image, index) => (
-  <Reveal key={index} delay={index * 100}>
-    <div className="mx-auto max-w-[260px]">
-      <div className="phone-mockup">
-        <div className="phone-screen">
-          <img
-            src={image}
-            alt={`${project.name} Screen ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-    </div>
-  </Reveal>
-))}
-      </div>
-    </div>
+   {project.gallery && project.gallery.length > 0 ? (
+  project.gallery.map((image, index) => (
+    <GalleryScreen key={index} name={project.name} image={image} index={index} />
+  ))
+) : (
+  <p className="col-span-full text-sm text-muted-foreground">
+    Screenshots coming soon.
+  </p>
+)}
   </section>
 
-  {/* Content with sidebar TOC */ }
   <section className="py-16">
     <div className="container-x grid gap-10 lg:grid-cols-[240px_1fr]">
       <aside className="hidden lg:block">

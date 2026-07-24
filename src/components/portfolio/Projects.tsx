@@ -34,11 +34,10 @@ export function Projects() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`rounded-full px-3 py-1.5 text-xs transition-all border ${
-                    filter === f
+                  className={`rounded-full px-3 py-1.5 text-xs transition-all border ${filter === f
                       ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/30"
                       : "border-border text-muted-foreground hover:text-foreground hover:border-accent/50"
-                  }`}
+                    }`}
                 >
                   {f}
                 </button>
@@ -55,10 +54,21 @@ export function Projects() {
                 params={{ slug: p.slug }}
                 className="group relative block overflow-hidden rounded-3xl glass tilt-card h-full"
               >
-                <div
-                  className="relative h-56 md:h-64 overflow-hidden"
-                  style={{ background: p.cover }}
-                >
+                <div className="relative h-56 md:h-64 overflow-hidden">
+                  {p.coverImage ? (
+                    <img
+                      src={p.coverImage}
+                      alt={p.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: p.cover }}
+                    />
+                  )}
+
+                  <div className="absolute inset-0 bg-black/35" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_60%)]" />
                   <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[radial-gradient(circle_at_80%_80%,white,transparent_60%)]" />
                   <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between">
@@ -87,7 +97,6 @@ export function Projects() {
                       </span>
                     ))}
                   </div>
-
                   <div className="mt-5 flex items-center justify-between gap-3 text-xs text-muted-foreground">
                     <span className="min-w-0 truncate">
                       <span className="text-accent">{p.company}</span> · {p.duration}

@@ -14,14 +14,14 @@ export const profile = {
   name: "Piyush Maheshwari",
   title: "Mobile Application Developer",
   subtitle: "Android · Flutter · Firebase",
-  location: "Navi Mumbai, Maharashtra, India",
+  location: "Mumbai, India",
   email: "maheshwaripiyush99.pm40@gmail.com",
   phone: "+91 70215 07179",
   yearsExperience: 6,
   github: "https://github.com/piyushmaheshwari0498",
   linkedin: "https://www.linkedin.com/in/piyush-maheshwari-093bb1157",
   resume: "/Piyush_Maheshwari_Resume.pdf",
-  status: "Open to freelance & full-time opportunities",
+  status: "Remote Working",
   summary:
     "Results-oriented Mobile Application Developer with 6+ years designing and deploying scalable Android (Java/Kotlin) and Flutter applications. Specialized in offline-first architecture, Firebase real-time systems, and performance-critical integrations — from POS and OTT platforms to SAP-integrated enterprise mobility.",
   bio: [
@@ -45,7 +45,7 @@ export const skills: SkillCategory[] = [
     accent: "from-[oklch(0.58_0.22_265)] to-[oklch(0.78_0.14_232)]",
     description: "Native Android & cross-platform Flutter, shipped to production.",
     items: [
-      { name: "Flutter · Dart", level: "Expert" },
+      { name: "Flutter · Dart", level: "Advanced" },
       { name: "Android · Kotlin", level: "Expert" },
       { name: "Android · Java", level: "Expert" },
       { name: "Android SDK", level: "Expert" },
@@ -59,7 +59,7 @@ export const skills: SkillCategory[] = [
     items: [
       { name: "MVVM", level: "Expert" },
       { name: "Clean Architecture", level: "Advanced" },
-      { name: "Offline-First", level: "Expert" },
+      { name: "Offline-First", level: "Advanced" },
       { name: "Modular Design", level: "Advanced" },
     ],
   },
@@ -196,7 +196,10 @@ export type Project = {
   status: "Live" | "In Production" | "Freelance" | "Personal";
   categories: string[];
   tech: string[];
-  cover: string; // gradient
+  cover: string;          // Keep as gradient overlay
+  coverImage: string;     // Project Card Banner
+  heroImage: string;      // Detail Page Header
+  gallery: string[];      // App Screenshots
   overview: string;
   problem: string;
   solution: string;
@@ -230,6 +233,18 @@ export const projects: Project[] = [
     categories: ["Flutter", "Firebase", "Enterprise"],
     tech: ["Flutter", "Dart", "REST APIs", "Hive", "Star Printers", "Sunmi"],
     cover: "linear-gradient(135deg,#2563EB,#38BDF8)",
+
+    coverImage: "/rue-pos/cover.webp",
+
+    heroImage: "/rue-pos/hero.webp",
+
+    gallery: [
+      "/rue-pos/1.webp",
+      "/rue-pos/2.webp",
+      "/rue-pos/3.webp",
+      "/rue-pos/4.webp",
+      "/rue-pos/5.webp",
+    ],
     overview:
       "RUE Catering POS is a Flutter tablet application used by cashiers to take orders, apply discounts, split payments and print receipts. The POS communicates with the restaurant backend over REST APIs; the backend then writes each confirmed order into Firebase Realtime Database, where the separate native Android KOT application picks it up in the kitchen. The POS runs across three outlets and 100+ transactions per branch per day.",
     problem:
@@ -288,6 +303,18 @@ export const projects: Project[] = [
     categories: ["Android", "Kotlin", "Firebase", "Enterprise"],
     tech: ["Kotlin", "Android SDK", "Firebase Realtime Database", "REST APIs", "Thermal Printers"],
     cover: "linear-gradient(135deg,#F97316,#EF4444)",
+
+    coverImage: "/rue-kot/cover.webp",
+
+    heroImage: "/rue-kot/hero.webp",
+
+    gallery: [
+      "/rue-kot/1.webp",
+      "/rue-kot/2.webp",
+      "/rue-kot/3.webp",
+      "/rue-kot/4.webp",
+      "/rue-kot/5.webp",
+    ],
     overview:
       "RUE KOT is a native Android application that runs on kitchen displays and dispatch stations. It listens to Firebase Realtime Database for orders inserted by the backend (which receives them from the RUE Catering POS) and routes each order through role-based modules — Kitchen, Head Chef and Dispatch. It also synchronizes stock and inventory with the backend over REST APIs, and pushes order status updates back into Firebase so the POS reflects the kitchen state live.",
     problem:
@@ -345,6 +372,15 @@ export const projects: Project[] = [
     categories: ["Android", "Kotlin", "Enterprise"],
     tech: ["Kotlin", "Room DB", "SAP", "REST", "Barcode SDK"],
     cover: "linear-gradient(135deg,#10B981,#38BDF8)",
+    coverImage: "/alhelli/cover.webp",
+
+    heroImage: "/alhelli/hero.webp",
+
+    gallery: [
+      "/alhelli/1.webp",
+      "/alhelli/2.webp",
+      "/alhelli/3.webp",
+    ],
     overview:
       "An offline-first Android app running on rugged warehouse PDAs. Handles goods receipt, stock intake, and verification with barcode scanning — even inside cold storage where connectivity is unreliable.",
     problem:
@@ -389,6 +425,15 @@ export const projects: Project[] = [
     categories: ["Flutter", "Enterprise"],
     tech: ["Flutter", "Clean Architecture", "JWT (AES-GCM)", "REST"],
     cover: "linear-gradient(135deg,#38BDF8,#2563EB)",
+    coverImage: "/inwani/cover.png",
+
+    heroImage: "/inwani/hero.png",
+
+    gallery: [
+      "/inwani/1.png",
+      "/inwani/2.png",
+      "/inwani/3.png",
+    ],
     overview:
       "A modular Flutter super app for real estate discovery, listings, and transactions across Saudi Arabia and Bahrain. Fully bilingual (English/Arabic) with dynamic API routing per region.",
     problem:
@@ -433,6 +478,15 @@ export const projects: Project[] = [
     categories: ["Flutter", "Personal"],
     tech: ["Flutter", "Custom Player", "TMDB API", "Background Downloads"],
     cover: "linear-gradient(135deg,#6D28D9,#2563EB)",
+    coverImage: "/nuvix/cover.webp",
+
+    heroImage: "/nuvix/hero.webp",
+
+    gallery: [
+      "/nuvix/1.webp",
+      "/nuvix/2.webp",
+      "/nuvix/3.webp",
+    ],
     overview:
       "A Flutter-based OTT platform with a custom video engine, smart server failover, and a resilient background download manager supporting pause/resume and local storage optimization.",
     problem:
@@ -473,6 +527,15 @@ export const projects: Project[] = [
     categories: ["Flutter", "Firebase", "Personal"],
     tech: ["Flutter", "Firebase Transactions", "PDF Engine"],
     cover: "linear-gradient(135deg,#F59E0B,#EF4444)",
+    coverImage: "/smartbill/cover.webp",
+
+    heroImage: "/smartbill/hero.webp",
+
+    gallery: [
+      "/smartbill/1.webp",
+      "/smartbill/2.webp",
+      "/smartbill/3.webp",
+    ],
     overview:
       "A POS and invoicing system built with Flutter + Firebase, featuring transactional inventory, an immutable snapshot document model for audit integrity, and dynamic PDF generation for both A4 invoices and thermal shipping labels.",
     problem:
@@ -509,6 +572,15 @@ export const projects: Project[] = [
     categories: ["Android", "Java", "Freelance"],
     tech: ["Android", "Google Maps", "Payment Gateway", "Notifications"],
     cover: "linear-gradient(135deg,#10B981,#2563EB)",
+    coverImage: "/servicekeeda-ev/cover.webp",
+
+    heroImage: "/servicekeeda-ev/hero.webp",
+
+    gallery: [
+      "/servicekeeda-ev/1.webp",
+      "/servicekeeda-ev/2.webp",
+      "/servicekeeda-ev/3.webp",
+    ],
     overview:
       "A full-featured Android app for discovering, booking, and paying for EV charging sessions. Includes spatial filtering, a multi-method payment flow, and session analytics.",
     problem: "EV drivers needed a single app for discovery, booking, and payment.",
@@ -584,33 +656,40 @@ export const projectFilters = [
 
 // Additional resume projects (from Interlink & CRDR tenures)
 projects.push(
-  {
-    slug: "asa-attendance-app",
-    name: "ASA Attendance & Tasks",
-    company: "ASA Technologies",
-    tagline: "End-to-end attendance and task management with real-time dashboards.",
-    role: "Mobile Engineer",
-    duration: "2024",
-    platform: "Android · Flutter",
-    status: "In Production",
-    categories: ["Flutter", "Firebase", "Enterprise"],
-    tech: ["Flutter", "Firebase", "REST", "Charts"],
-    cover: "linear-gradient(135deg,#2563EB,#10B981)",
-    overview:
-      "An internal workforce app for attendance, task assignment, and manager dashboards, wired to Firebase for real-time reporting.",
-    problem: "Managers needed live visibility into team status without spreadsheets.",
-    solution: "Flutter client + Firestore listeners drive a reporting layer that updates as events arrive.",
-    responsibilities: [
-      "Built attendance capture and task modules end-to-end",
-      "Wired real-time manager dashboards on Firestore",
-      "Owned Play Store release process and versioning",
-    ],
-    features: ["Live attendance", "Task assignment", "Reporting dashboard", "Role-based access"],
-    architecture: ["Firestore realtime data model", "Repository-per-feature Flutter modules"],
-    challenges: ["Keeping realtime cost predictable at scale"],
-    lessons: ["Denormalize aggressively for realtime dashboards"],
-    future: ["Payroll integration", "Geo-fenced check-in"],
-  },
+  // {
+  //   slug: "asa-attendance-app",
+  //   name: "ASA Attendance & Tasks",
+  //   company: "ASA Technologies",
+  //   tagline: "End-to-end attendance and task management with real-time dashboards.",
+  //   role: "Mobile Engineer",
+  //   duration: "2024",
+  //   platform: "Android · Flutter",
+  //   status: "In Production",
+  //   categories: ["Flutter", "Firebase", "Enterprise"],
+  //   tech: ["Flutter", "Firebase", "REST", "Charts"],
+  // cover: "linear-gradient(135deg,#2563EB,#10B981)",
+  // coverImage: "/asa-app/cover.webp",
+  // heroImage: "/asa-app/hero.webp",
+  // gallery: [
+  //   "/asa-app/1.webp",
+  //   "/asa-app/2.webp",
+  //   "/asa-app/3.webp",
+  // ],
+  //   overview:
+  //     "An internal workforce app for attendance, task assignment, and manager dashboards, wired to Firebase for real-time reporting.",
+  //   problem: "Managers needed live visibility into team status without spreadsheets.",
+  //   solution: "Flutter client + Firestore listeners drive a reporting layer that updates as events arrive.",
+  //   responsibilities: [
+  //     "Built attendance capture and task modules end-to-end",
+  //     "Wired real-time manager dashboards on Firestore",
+  //     "Owned Play Store release process and versioning",
+  //   ],
+  //   features: ["Live attendance", "Task assignment", "Reporting dashboard", "Role-based access"],
+  //   architecture: ["Firestore realtime data model", "Repository-per-feature Flutter modules"],
+  //   challenges: ["Keeping realtime cost predictable at scale"],
+  //   lessons: ["Denormalize aggressively for realtime dashboards"],
+  //   future: ["Payroll integration", "Geo-fenced check-in"],
+  // },
   {
     slug: "forlim-popoli-ecommerce",
     name: "Forlim Popoli E-Commerce",
@@ -623,6 +702,17 @@ projects.push(
     categories: ["Android", "Java", "Enterprise"],
     tech: ["Android", "Java", "CCAvenue", "REST"],
     cover: "linear-gradient(135deg,#EF4444,#F59E0B)",
+
+    coverImage: "/forlim/cover.webp",
+
+    heroImage: "/forlim/hero.webp",
+
+    gallery: [
+      "/forlim/1.webp",
+      "/forlim/2.webp",
+      "/forlim/3.webp",
+      "/forlim/4.webp",
+    ],
     overview: "An Android e-commerce app with barcode article handling and split Pay Now / Pay Later flows.",
     problem: "The client needed flexible payment handling alongside barcode-based stock lookups.",
     solution: "CCAvenue split payment integration paired with a barcode-first catalog UX.",
@@ -649,6 +739,16 @@ projects.push(
     categories: ["Android", "Java", "Enterprise"],
     tech: ["Android", "Java", "REST", "PDF"],
     cover: "linear-gradient(135deg,#6D28D9,#EF4444)",
+
+    coverImage: "/regal/cover.webp",
+
+    heroImage: "/regal/hero.webp",
+
+    gallery: [
+      "/regal/1.webp",
+      "/regal/2.webp",
+      "/regal/3.webp",
+    ],
     overview: "Field sales app unifying multi-branch stock with real-time inventory checks and automated client reports.",
     problem: "Reps had no reliable way to check stock across branches while on-site with clients.",
     solution: "Central inventory API surfaced through a lightweight Android UI with PDF reporting.",
@@ -675,6 +775,16 @@ projects.push(
     categories: ["Android", "Java", "Enterprise"],
     tech: ["Android", "Google Maps", "Geolocation", "REST"],
     cover: "linear-gradient(135deg,#10B981,#38BDF8)",
+
+    coverImage: "/connectexpress/cover.webp",
+
+    heroImage: "/connectexpress/hero.webp",
+
+    gallery: [
+      "/connectexpress/1.webp",
+      "/connectexpress/2.webp",
+      "/connectexpress/3.webp",
+    ],
     overview: "Google Maps + geolocation app for field-executive attendance and location-stamped feedback capture.",
     problem: "Ops needed verifiable attendance and site-visit records from field teams.",
     solution: "Location-stamped attendance and feedback flows backed by Google Maps SDK.",
@@ -701,6 +811,17 @@ projects.push(
     categories: ["Android", "Java", "Enterprise"],
     tech: ["Android", "Java", "REST", "MySQL"],
     cover: "linear-gradient(135deg,#2563EB,#6D28D9)",
+
+    coverImage: "/hrms/cover.webp",
+
+    heroImage: "/hrms/hero.webp",
+
+    gallery: [
+      "/hrms/1.webp",
+      "/hrms/2.webp",
+      "/hrms/3.webp",
+      "/hrms/4.webp",
+    ],
     overview: "Three enterprise Android products — HRMS, PMS, and Leave Management — delivered inside a 3-person agile team.",
     problem: "Client operations were spread across paper and desktop tools with no mobile access.",
     solution: "A shared Android foundation reused across three domain apps with per-tenant configuration.",

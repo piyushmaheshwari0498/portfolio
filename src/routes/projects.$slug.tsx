@@ -167,68 +167,68 @@ function ProjectPage() {
         )}
 
         <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px]" />
+
+        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
+        <div className="container-x relative z-10">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="size-4" /> Back to all projects
+          </Link>
+
+          <div className="mt-6 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+            <span className="rounded-full glass px-3 py-1">{project.status}</span>
+            <span className="rounded-full glass px-3 py-1">{project.platform}</span>
+            <span className="rounded-full glass px-3 py-1">{project.duration}</span>
+            <span className="rounded-full glass px-3 py-1">{project.role}</span>
+          </div>
+
+          <h1 className="mt-6 text-5xl md:text-7xl font-semibold tracking-tight">
+            {project.name}
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
+
+          <div className="mt-4 text-sm text-muted-foreground">
+            <span className="text-accent">{project.company}</span> · {project.duration}
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-1.5">
+            {project.tech.map((t: string) => (
+              <span
+                key={t}
+                className="text-[11px] rounded-full glass px-2.5 py-1 text-foreground/80"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl glass px-5 py-3 text-sm font-medium hover:bg-white/10 transition"
+              >
+                <Github className="size-4" /> View Source
+              </a>
+            )}
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/30 hover:brightness-110 transition"
+              >
+                <ExternalLink className="size-4" /> Live Demo
+              </a>
+            )}
+          </div>
+        </div>
       </section>
-
-      <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
-      <div className="container-x relative z-10">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="size-4" /> Back to all projects
-        </Link>
-
-        <div className="mt-6 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-          <span className="rounded-full glass px-3 py-1">{project.status}</span>
-          <span className="rounded-full glass px-3 py-1">{project.platform}</span>
-          <span className="rounded-full glass px-3 py-1">{project.duration}</span>
-          <span className="rounded-full glass px-3 py-1">{project.role}</span>
-        </div>
-
-        <h1 className="mt-6 text-5xl md:text-7xl font-semibold tracking-tight">
-          {project.name}
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
-
-        <div className="mt-4 text-sm text-muted-foreground">
-          <span className="text-accent">{project.company}</span> · {project.duration}
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-1.5">
-          {project.tech.map((t: string) => (
-            <span
-              key={t}
-              className="text-[11px] rounded-full glass px-2.5 py-1 text-foreground/80"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl glass px-5 py-3 text-sm font-medium hover:bg-white/10 transition"
-            >
-              <Github className="size-4" /> View Source
-            </a>
-          )}
-          {project.demo && (
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/30 hover:brightness-110 transition"
-            >
-              <ExternalLink className="size-4" /> Live Demo
-            </a>
-          )}
-        </div>
-      </div>
 
       <section className="py-16 md:py-20">
         <div className="container-x">

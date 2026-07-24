@@ -18,11 +18,11 @@ import { profile } from "@/lib/portfolio-data";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Piyush Maheshwari — Android & Flutter Developer" },
+      { title: "Piyush Maheshwari | Senior Mobile Application Developer" },
       {
         name: "description",
         content:
-          "Portfolio of Piyush Maheshwari — 6+ years shipping Android (Kotlin/Java) and Flutter apps: POS, OTT, SAP-integrated warehouse, and multi-region super apps.",
+          "Senior Mobile Application Developer with 6+ years of experience building enterprise Flutter and Native Android applications, offline-first architectures, Firebase real-time systems, POS platforms, and scalable mobile solutions.",
       },
       { property: "og:title", content: "Piyush Maheshwari — Android & Flutter Developer" },
       {
@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "Piyush Maheshwari, Android developer, Flutter developer, mobile app developer, Kotlin, Java, Firebase, POS, Navi Mumbai",
+          "Flutter Developer,Android Developer,Mobile Application Developer,Java,Kotlin,Flutter,Firebase,MVVM,Clean Architecture,POS Developer,Enterprise Mobile Apps,Offline First,Mobile Portfolio,Piyush Maheshwari",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],

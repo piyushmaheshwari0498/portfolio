@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Github, ExternalLink, Play } from "lucide-react";
+import { ArrowLeft, ArrowRight, Github, ExternalLink } from "lucide-react";
 import { Nav } from "@/components/portfolio/Nav";
 import { Footer } from "@/components/portfolio/Footer";
 import { Reveal } from "@/components/portfolio/Reveal";
@@ -229,162 +229,209 @@ function ProjectPage() {
           )}
         </div>
       </div>
-    </section>
 
-  <section className="py-16 md:py-20">
-   {project.gallery && project.gallery.length > 0 ? (
-  project.gallery.map((image, index) => (
-    <GalleryScreen key={index} name={project.name} image={image} index={index} />
-  ))
-) : (
-  <p className="col-span-full text-sm text-muted-foreground">
-    Screenshots coming soon.
-  </p>
-)}
-  </section>
-
-  <section className="py-16">
-    <div className="container-x grid gap-10 lg:grid-cols-[240px_1fr]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-28">
-          <div className="text-xs uppercase tracking-[0.2em] text-accent">Contents</div>
-          <ul className="mt-4 space-y-2 text-sm">
-            {toc.map((t) => (
-              <li key={t.id}>
-                <a
-                  href={`#${t.id}`}
-                  className="text-muted-foreground hover:text-foreground transition"
-                >
-                  {t.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </aside>
-
-      <article className="space-y-14 max-w-3xl">
-        <Section id="overview" title="Overview">
-          <p>{project.overview}</p>
-        </Section>
-
-        <Section id="responsibilities" title="Responsibilities">
-          <ul className="space-y-2">
-            {project.responsibilities.map((f: string) => (
-              <li key={f} className="flex gap-3">
-                <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        <Section id="problem" title="Problem Statement">
-          <p>{project.problem}</p>
-        </Section>
-
-        <Section id="solution" title="Solution">
-          <p>{project.solution}</p>
-        </Section>
-
-        <Section id="features" title="Key Features">
-          <ul className="space-y-2">
-            {project.features.map((f: string) => (
-              <li key={f} className="flex gap-3">
-                <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        <Section id="architecture" title="Architecture">
-          <ul className="space-y-2">
-            {project.architecture.map((f: string) => (
-              <li key={f} className="flex gap-3">
-                <span className="mt-2 size-1.5 rounded-full bg-primary shrink-0" />
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        <Section id="challenges" title="Challenges">
-          <ul className="space-y-2">
-            {project.challenges.map((f: string) => (
-              <li key={f} className="flex gap-3">
-                <span className="mt-2 size-1.5 rounded-full bg-destructive shrink-0" />
-                <span>{f}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {project.lessons && project.lessons.length > 0 && (
-          <Section id="lessons" title="Lessons Learned">
-            <ul className="space-y-2">
-              {project.lessons.map((f: string) => (
-                <li key={f} className="flex gap-3">
-                  <span className="mt-2 size-1.5 rounded-full bg-success shrink-0" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        )}
-
-        {project.future && project.future.length > 0 && (
-          <Section id="future" title="Future Improvements">
-            <ul className="space-y-2">
-              {project.future.map((f: string) => (
-                <li key={f} className="flex gap-3">
-                  <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        )}
-      </article>
-    </div>
-  </section>
-
-  {/* Related Project */ }
-  {
-    project.related && (
-      <section className="py-16 border-t border-border">
+      <section className="py-16 md:py-20">
         <div className="container-x">
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.2em] text-accent">Related Project</div>
+            <div className="text-xs uppercase tracking-[0.2em] text-accent">Preview</div>
             <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
-              Works together with
+              Screens from the app
             </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Screenshots are illustrative — mockups shown pending final captures.
+            </p>
           </Reveal>
-          <Reveal>
-            <Link
-              to="/projects/$slug"
-              params={{ slug: project.related.slug }}
-              className="mt-6 block glass rounded-2xl p-6 tilt-card group"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="min-w-0">
-                  <div className="text-lg font-semibold group-hover:text-accent transition-colors">
-                    {project.related.label}
+
+          <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* {[0, 1, 2].map((i) => (
+          <Reveal key={i} delay={i * 100}>
+            <div className="mx-auto max-w-[240px]">
+              <div className="phone-mockup">
+                <div className="phone-screen relative">
+                  <div className="absolute inset-0" style={{ background: project.cover }} />
+                  <div className="relative flex flex-col h-full p-4 text-white">
+                    <div className="text-[10px] uppercase opacity-70 tracking-widest">
+                      {project.name}
+                    </div>
+                    <div className="mt-2 text-xl font-semibold">
+                      {["Dashboard", "Details", "Actions"][i]}
+                    </div>
+                    <div className="mt-4 space-y-2">
+                      {Array.from({ length: 5 }).map((_, k) => (
+                        <div key={k} className="h-8 rounded-lg bg-white/10" />
+                      ))}
+                    </div>
+                    <div className="mt-auto flex items-center justify-between text-[10px] opacity-70">
+                      <span>Screen {i + 1} / 3</span>
+                      <Play className="size-3" />
+                    </div>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    {project.related.description}
-                  </p>
                 </div>
-                <ArrowRight className="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
               </div>
-            </Link>
+            </div>
           </Reveal>
+        ))} */}
+            {project.gallery?.map((image, index) => (
+              <Reveal key={index} delay={index * 100}>
+                <div className="mx-auto max-w-[260px]">
+                  <div className="phone-mockup">
+                    <div className="phone-screen">
+                      <img
+                        src={image}
+                        alt={`${project.name} Screen ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
-    )
-  }
 
-  {/* Prev/Next */ }
+      <section className="py-16">
+        <div className="container-x grid gap-10 lg:grid-cols-[240px_1fr]">
+          <aside className="hidden lg:block">
+            <div className="sticky top-28">
+              <div className="text-xs uppercase tracking-[0.2em] text-accent">Contents</div>
+              <ul className="mt-4 space-y-2 text-sm">
+                {toc.map((t) => (
+                  <li key={t.id}>
+                    <a
+                      href={`#${t.id}`}
+                      className="text-muted-foreground hover:text-foreground transition"
+                    >
+                      {t.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+
+          <article className="space-y-14 max-w-3xl">
+            <Section id="overview" title="Overview">
+              <p>{project.overview}</p>
+            </Section>
+
+            <Section id="responsibilities" title="Responsibilities">
+              <ul className="space-y-2">
+                {project.responsibilities.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
+            <Section id="problem" title="Problem Statement">
+              <p>{project.problem}</p>
+            </Section>
+
+            <Section id="solution" title="Solution">
+              <p>{project.solution}</p>
+            </Section>
+
+            <Section id="features" title="Key Features">
+              <ul className="space-y-2">
+                {project.features.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
+            <Section id="architecture" title="Architecture">
+              <ul className="space-y-2">
+                {project.architecture.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-primary shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
+            <Section id="challenges" title="Challenges">
+              <ul className="space-y-2">
+                {project.challenges.map((f: string) => (
+                  <li key={f} className="flex gap-3">
+                    <span className="mt-2 size-1.5 rounded-full bg-destructive shrink-0" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+
+            {project.lessons && project.lessons.length > 0 && (
+              <Section id="lessons" title="Lessons Learned">
+                <ul className="space-y-2">
+                  {project.lessons.map((f: string) => (
+                    <li key={f} className="flex gap-3">
+                      <span className="mt-2 size-1.5 rounded-full bg-success shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
+
+            {project.future && project.future.length > 0 && (
+              <Section id="future" title="Future Improvements">
+                <ul className="space-y-2">
+                  {project.future.map((f: string) => (
+                    <li key={f} className="flex gap-3">
+                      <span className="mt-2 size-1.5 rounded-full bg-accent shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Section>
+            )}
+          </article>
+        </div>
+      </section>
+
+      {/* Related Project */}
+      {
+        project.related && (
+          <section className="py-16 border-t border-border">
+            <div className="container-x">
+              <Reveal>
+                <div className="text-xs uppercase tracking-[0.2em] text-accent">Related Project</div>
+                <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
+                  Works together with
+                </h2>
+              </Reveal>
+              <Reveal>
+                <Link
+                  to="/projects/$slug"
+                  params={{ slug: project.related.slug }}
+                  className="mt-6 block glass rounded-2xl p-6 tilt-card group"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      <div className="text-lg font-semibold group-hover:text-accent transition-colors">
+                        {project.related.label}
+                      </div>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                        {project.related.description}
+                      </p>
+                    </div>
+                    <ArrowRight className="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              </Reveal>
+            </div>
+          </section>
+        )
+      }
+
+      {/* Prev/Next */}
       <section className="py-16 border-t border-border">
 
         <div className="container-x grid gap-4 sm:grid-cols-2">

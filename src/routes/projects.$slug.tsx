@@ -147,11 +147,7 @@ function ProjectPage() {
       <Nav />
 
       {/* Hero banner */}
-      {/* <section
-        className="relative isolate pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden"
-        style={{ background: project.cover }}
-      > */}
-      <section className="relative isolate pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      <section className="relative isolate pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden min-h-[560px] flex items-end">
         {project.heroImage && !heroFailed ? (
           <img
             src={project.heroImage}
@@ -166,14 +162,14 @@ function ProjectPage() {
           />
         )}
 
-        <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px]" />
+        {/* Single soft scrim: photo stays visible up top, fades dark toward the text so it reads clearly */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-black/10" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_55%)]" />
 
-        <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
         <div className="container-x relative z-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition"
           >
             <ArrowLeft className="size-4" /> Back to all projects
           </Link>
@@ -185,7 +181,7 @@ function ProjectPage() {
             <span className="rounded-full glass px-3 py-1">{project.role}</span>
           </div>
 
-          <h1 className="mt-6 text-5xl md:text-7xl font-semibold tracking-tight">
+          <h1 className="mt-6 text-5xl md:text-7xl font-semibold tracking-tight drop-shadow-lg">
             {project.name}
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{project.tagline}</p>
@@ -237,54 +233,21 @@ function ProjectPage() {
             <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
               Screens from the app
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Screenshots are illustrative — mockups shown pending final captures.
-            </p>
+            {(!project.gallery || project.gallery.length === 0) && (
+              <p className="mt-2 text-sm text-muted-foreground">
+                Screenshots coming soon.
+              </p>
+            )}
           </Reveal>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* {[0, 1, 2].map((i) => (
-          <Reveal key={i} delay={i * 100}>
-            <div className="mx-auto max-w-[240px]">
-              <div className="phone-mockup">
-                <div className="phone-screen relative">
-                  <div className="absolute inset-0" style={{ background: project.cover }} />
-                  <div className="relative flex flex-col h-full p-4 text-white">
-                    <div className="text-[10px] uppercase opacity-70 tracking-widest">
-                      {project.name}
-                    </div>
-                    <div className="mt-2 text-xl font-semibold">
-                      {["Dashboard", "Details", "Actions"][i]}
-                    </div>
-                    <div className="mt-4 space-y-2">
-                      {Array.from({ length: 5 }).map((_, k) => (
-                        <div key={k} className="h-8 rounded-lg bg-white/10" />
-                      ))}
-                    </div>
-                    <div className="mt-auto flex items-center justify-between text-[10px] opacity-70">
-                      <span>Screen {i + 1} / 3</span>
-                      <Play className="size-3" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))} */}
             {project.gallery?.map((image, index) => (
-              <Reveal key={index} delay={index * 100}>
-                <div className="mx-auto max-w-[260px]">
-                  <div className="phone-mockup">
-                    <div className="phone-screen">
-                      <img
-                        src={image}
-                        alt={`${project.name} Screen ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
+              <GalleryScreen
+                key={index}
+                name={project.name}
+                image={image}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -397,43 +360,40 @@ function ProjectPage() {
       </section>
 
       {/* Related Project */}
-      {
-        project.related && (
-          <section className="py-16 border-t border-border">
-            <div className="container-x">
-              <Reveal>
-                <div className="text-xs uppercase tracking-[0.2em] text-accent">Related Project</div>
-                <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
-                  Works together with
-                </h2>
-              </Reveal>
-              <Reveal>
-                <Link
-                  to="/projects/$slug"
-                  params={{ slug: project.related.slug }}
-                  className="mt-6 block glass rounded-2xl p-6 tilt-card group"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <div className="text-lg font-semibold group-hover:text-accent transition-colors">
-                        {project.related.label}
-                      </div>
-                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                        {project.related.description}
-                      </p>
+      {project.related && (
+        <section className="py-16 border-t border-border">
+          <div className="container-x">
+            <Reveal>
+              <div className="text-xs uppercase tracking-[0.2em] text-accent">Related Project</div>
+              <h2 className="mt-2 text-2xl md:text-3xl font-semibold">
+                Works together with
+              </h2>
+            </Reveal>
+            <Reveal>
+              <Link
+                to="/projects/$slug"
+                params={{ slug: project.related.slug }}
+                className="mt-6 block glass rounded-2xl p-6 tilt-card group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0">
+                    <div className="text-lg font-semibold group-hover:text-accent transition-colors">
+                      {project.related.label}
                     </div>
-                    <ArrowRight className="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {project.related.description}
+                    </p>
                   </div>
-                </Link>
-              </Reveal>
-            </div>
-          </section>
-        )
-      }
+                  <ArrowRight className="size-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* Prev/Next */}
       <section className="py-16 border-t border-border">
-
         <div className="container-x grid gap-4 sm:grid-cols-2">
           <Link
             to="/projects/$slug"
@@ -465,7 +425,7 @@ function ProjectPage() {
       </section>
 
       <Footer />
-    </main >
+    </main>
   );
 }
 
